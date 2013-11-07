@@ -58,6 +58,7 @@ import android.util.Log;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.widget.LockPatternUtils;
 import com.android.settings.DropDownPreference;
+import com.android.settings.hardware.VibratorIntensity;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
@@ -90,6 +91,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
     private static final String KEY_VIBRATE_ON_TOUCH = "vibrate_on_touch";
     private static final String KEY_ZEN_MODE = "zen_mode";
     private static final String KEY_VOLUME_LINK_NOTIFICATION = "volume_link_notification";
+    private static final String KEY_VIBRATION_INTENSITY = "vibration_intensity";
 
     private static final String[] RESTRICTED_KEYS = {
         KEY_MEDIA_VOLUME,
@@ -98,6 +100,10 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
         KEY_NOTIFICATION_VOLUME,
         KEY_ZEN_MODE,
     };
+
+     private static final SettingPref[] PREFS = {
+        PREF_VIBRATION_INTENSITY,
+     };
 
     private static final int SAMPLE_CUTOFF = 2000;  // manually cap sample playback at 2 seconds
 
@@ -127,6 +133,14 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
     private PreferenceCategory mSoundCategory;
 
     private UserManager mUserManager;
+
+    private static final SettingPref PREF_VIBRATION_INTENSITY = new SettingPref(
+            TYPE_SYSTEM, KEY_VIBRATION_INTENSITY, System.HAPTIC_FEEDBACK_ENABLED, DEFAULT_ON) {
+        @Override
+        public boolean isApplicable(Context context) {
+            return VibratorIntensity.isSupported();
+        }
+    };
 
     @Override
     protected int getMetricsCategory() {
