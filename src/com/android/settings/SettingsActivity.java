@@ -94,6 +94,7 @@ import com.android.settings.fuelgauge.PowerUsageDetail;
 import com.android.settings.fuelgauge.PowerUsageSummary;
 import com.android.settings.notification.NotificationManagerSettings;
 import com.android.settings.notification.SoundSettings;
+import com.android.settings.livedisplay.LiveDisplay;
 import com.android.settings.inputmethod.InputMethodAndLanguageSettings;
 import com.android.settings.inputmethod.KeyboardLayoutPickerFragment;
 import com.android.settings.inputmethod.SpellCheckersSettings;
@@ -362,7 +363,8 @@ public class SettingsActivity extends Activity
             WriteSettingsDetails.class.getName(),
 	    MainSettings.class.getName(),
             DisplayRotation.class.getName(),
-            NotificationManagerSettings.class.getName()
+            NotificationManagerSettings.class.getName(),
+            LiveDisplay.class.getName()
     };
 
 
