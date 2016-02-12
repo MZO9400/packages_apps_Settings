@@ -106,7 +106,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_WAKEUP_WHEN_PLUGGED_UNPLUGGED = "wakeup_when_plugged_unplugged";
     private static final String KEY_WAKEUP_CATEGORY = "category_wakeup_options";
     private static final String KEY_PROXIMITY_WAKE = "proximity_on_wake";
-    private static final String KEY_TAP_TO_WAKE = "double_tap_wake_gesture";
     private static final String KEY_PROXIMITY_WAKE = "proximity_on_wake";
     private static final String KEY_DISPLAY_ROTATION = "display_rotation";
     private static final String KEY_WAKE_WHEN_PLUGGED_OR_UNPLUGGED = "wake_when_plugged_or_unplugged";
@@ -225,7 +224,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         } else {
             prefSet.removePreference(mDozeCategory);
         }
-        if (isTapToWakeAvailable(getResources())) {
+        if (isTapToWakeAvailable(getResources()) || mHardware.isSupported(FEATURE_TAP_TO_WAKE)) {
             mTapToWakePreference = (SwitchPreference) findPreference(KEY_TAP_TO_WAKE);
             mTapToWakePreference.setOnPreferenceChangeListener(this);
         } else {

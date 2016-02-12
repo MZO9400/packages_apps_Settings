@@ -138,7 +138,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
             TYPE_SYSTEM, KEY_VIBRATION_INTENSITY, System.HAPTIC_FEEDBACK_ENABLED, DEFAULT_ON) {
         @Override
         public boolean isApplicable(Context context) {
-            return VibratorIntensity.isSupported();
+            return false; //VibratorIntensity.isSupported();
         }
     };
 
